@@ -1,0 +1,88 @@
+/*
+/*	Variables
+/*---------------------------------------------------------------------------------------- */
+
+/*
+/*	Colours
+/*---------------------------------------------------------------------------------------- */
+
+/*** Base ***/
+
+@function black($opacity){
+    @return rgba(0,0,0,$opacity)
+}
+@function white($opacity){
+    @return rgba(255,255,255,$opacity)
+}
+
+$foreground: #fff;
+$middleground: #999;
+$background: #200006; //#212526;
+$cutout: darken($background, 3%); //#17191a;
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin page-shadow($top, $left, $blur, $color) {
+  $top2: $top - ($top*2);
+  $left2: $left - ($left*2);
+  -webkit-box-shadow:inset $top $left $blur $color, inset $top2 $left2 $blur $color;
+  -moz-box-shadow:inset $top $left $blur $color, inset $top2 $left2 $blur $color;
+  box-shadow:inset $top $left $blur $color, inset $top2 $left2 $blur $color;
+}
+
+@mixin rounded($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+@mixin animation($name, $duration, $ease, $infinite, $fill) {
+  -webkit-animation: $name $duration $ease $infinite $fill;
+  -moz-animation:    $name $duration $ease $infinite $fill;
+  -o-animation:      $name $duration $ease $infinite $fill; 
+  animation:         $name $duration $ease $infinite $fill;
+}
+
+$scale-small: scaleY(0);
+$scale-big: scaleY(1);
+
+@mixin transform($string) {
+  transform: $string;
+  -ms-transform: $string; 
+  -moz-transform: $string;
+  -webkit-transform: $string;
+  -o-transform: $string;
+}
+
+@mixin keyframes( $animationName ) {
+  @-webkit-keyframes $animationName {
+    @content;
+  }
+  @-moz-keyframes $animationName {
+    @content;
+  }
+  @-o-keyframes $animationName {
+    @content;
+  }
+  @keyframes $animationName {
+    @content;
+  }
+}
